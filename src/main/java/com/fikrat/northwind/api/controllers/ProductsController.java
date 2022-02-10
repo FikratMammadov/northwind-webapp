@@ -3,7 +3,9 @@ package com.fikrat.northwind.api.controllers;
 import com.fikrat.northwind.business.abstracts.ProductService;
 import com.fikrat.northwind.core.utilities.results.DataResult;
 import com.fikrat.northwind.core.utilities.results.Result;
+import com.fikrat.northwind.core.utilities.results.SuccessDataResult;
 import com.fikrat.northwind.entities.concretes.Product;
+import com.fikrat.northwind.entities.dtos.ProductWithCategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,5 +65,10 @@ public class ProductsController {
     @GetMapping("getAllDesc")
     public DataResult<List<Product>> getAllSorted(){
         return this.productService.getAllSorted();
+    }
+
+    @GetMapping("getProductWithCategoryDetails")
+    public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+        return this.productService.getProductWithCategoryDetails();
     }
 }

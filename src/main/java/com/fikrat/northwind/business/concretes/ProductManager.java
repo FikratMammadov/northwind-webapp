@@ -7,6 +7,7 @@ import com.fikrat.northwind.core.utilities.results.SuccessDataResult;
 import com.fikrat.northwind.core.utilities.results.SuccessResult;
 import com.fikrat.northwind.dataAccess.abstracts.ProductDao;
 import com.fikrat.northwind.entities.concretes.Product;
+import com.fikrat.northwind.entities.dtos.ProductWithCategoryDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -80,5 +81,10 @@ public class ProductManager implements ProductService {
     @Override
     public DataResult<List<Product>> getByNameAndCategory(String productName, int categoryId) {
         return new SuccessDataResult<List<Product>>(productDao.getByNameAndCategory_CategoryId(productName,categoryId),"data listelendi.");
+    }
+
+    @Override
+    public DataResult<List<ProductWithCategoryDto>> getProductWithCategoryDetails() {
+        return new SuccessDataResult<List<ProductWithCategoryDto>>(productDao.getProductWithCategoryDetails());
     }
 }
